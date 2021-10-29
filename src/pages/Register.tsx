@@ -10,7 +10,7 @@ import { checkCandidate } from "../validators";
 import { HiredController } from "../controllers";
 
 export default function Register() {
-  const params:any = useParams();
+  const params: any = useParams();
   const toast = useToast();
 
   const [cpfValid, setCpfValid] = useState<boolean>(false);
@@ -29,12 +29,12 @@ export default function Register() {
       phone,
       knowledges,
       cpfValid,
+      valid: false
     };
   };
 
   const submit = async () => {
     const hiredUpdate = transforHired();
-    hiredUpdate.cpfValid = cpfValid;
     let result = await checkCandidate(hiredUpdate);
     if (result.valid) {
       try {
