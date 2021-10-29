@@ -2,7 +2,7 @@ import axios from "axios";
 import { IHired, IHiredRegister } from "../types";
 
 const api = axios.create({
-  baseURL: "https://credeasy.herokuapp.com/hired",
+  baseURL: "http://localhost:3002/hired",
 });
 
 class HiredController {

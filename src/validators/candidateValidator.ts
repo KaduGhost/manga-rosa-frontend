@@ -21,7 +21,7 @@ const validator = async function (validate: IHiredRegister) {
         await candidateRegister.validator.validate(validate);
         if (validate.phone) await candidateRegister.phoneValidator.validate(validate);
         if (validate.knowledges.length == 0) return {valid:false, title: `É necessário escolher algum conhecimento`}
-        else if (validate.knowledges.length == 3) return {valid:false, title: `Você só pode escolher até 3 conhecimentos`}
+        else if (validate.knowledges.length > 3) return {valid:false, title: `Você só pode escolher até 3 conhecimentos`}
         return { valid: true, title: "valido" }
     } catch (error: any) {
         return { valid: false, title: `${error.params.label} ${error.message}` }
