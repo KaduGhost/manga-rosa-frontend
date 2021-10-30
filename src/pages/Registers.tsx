@@ -12,15 +12,14 @@ export default function Registers() {
   useEffect(() => {
     const fetch = async () => {
       const hiredsDb: any = await HiredController.findAll();
-      console.log(hiredsDb)
       setHireds(hiredsDb.data);
     };
     fetch();
   }, []);
 
   const handleClick = (name: string) => {
-    history.push(`/${name}/validar`)
-  }
+    history.push(`/${name}/validar`);
+  };
 
   return (
     <DashboardContainer>
@@ -32,10 +31,20 @@ export default function Registers() {
         componentItem={
           <BoxHired
             onClickRow={(hired) => {
-              handleClick(hired.name)
+              handleClick(hired.name);
             }}
           ></BoxHired>
         }
+        orderBy={(a: any, b: any) => {
+          if (a.name > b.name) return 1;
+          if (a.name < b.name) return -1;
+          return 0;
+        }}
+        onClickSearch={(input) => {
+          return (item: IHired) => {
+             return (item.phone && item.phone.includes(input)) ||item.name.includes(input) || item.cpf.includes(input) || item.email.includes(input);
+          };
+        }}
       />
     </DashboardContainer>
   );
