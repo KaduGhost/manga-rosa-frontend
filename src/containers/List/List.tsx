@@ -8,6 +8,7 @@ interface IList extends FlexProps {
 
 export default function List({pages, onChangePage, page, ...res}:IList) {
 
+    //Função para alterar a página da lista
     const changePage = (id: string) => {
         let newPage = page;
         if (id === "next") newPage++

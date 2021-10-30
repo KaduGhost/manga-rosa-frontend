@@ -34,15 +34,6 @@ class HiredController {
     }
   }
 
-  async findById(id: string): Promise<JSON> {
-    try {
-      let response = await api.get("/findById", { params: { id: id } });
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  }
-
   async update(customer: IHired): Promise<JSON> {
     try {
       let response = await api.put("/", customer);

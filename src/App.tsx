@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Register, Registers, Validar } from './pages'
  
+//Importação e liberação de rotas
 class App extends Component {
   render() {
     return (

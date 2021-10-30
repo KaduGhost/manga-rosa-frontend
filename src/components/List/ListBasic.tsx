@@ -24,17 +24,23 @@ export default function ListBasic({
   filter,
   onClickSearch,
 }: IListBasic) {
-  const [inputSearch, setInputSearch] = useState<string>('');
+  const [inputSearch, setInputSearch] = useState<string>("");
+
   const [pages, setPages] = useState<number>(1);
   const [page, setPage] = useState<number>(initialPage);
 
+  //Filtrar os items caso tenha um filtro no componente
   const itemsFiltered = filter ? items.filter(filter) : items;
+  //Ordenar os items caso tenha uma função de odernação no componente
   const itemsOrdered = orderBy ? itemsFiltered.sort(orderBy) : itemsFiltered;
-  const itemsSearched = onClickSearch ? itemsOrdered.filter((object) => {
-    return onClickSearch(inputSearch)(object);
-  }) : itemsOrdered;
-  
+  //Filtrar os items pelo que esta escrito na barra de pesquisa
+  const itemsSearched = onClickSearch
+    ? itemsOrdered.filter((object) => {
+        return onClickSearch(inputSearch)(object);
+      })
+    : itemsOrdered;
 
+  //Função para buscar as linhs que vão aparecer na lista
   const getRowsByPage = (page: number) => {
     const rows = itemsSearched.slice(perPage * (page - 1), perPage * page);
     return rows;
@@ -48,9 +54,7 @@ export default function ListBasic({
     <>
       <CustomBarEmpty>
         <Stack direction="row" spacing={10} w="100%">
-          <InputSearch
-            onClickSearch={(input) => setInputSearch(input)}
-          />
+          <InputSearch onClickSearch={(input) => setInputSearch(input)} />
         </Stack>
       </CustomBarEmpty>
       <ListContainer pages={pages} onChangePage={setPage} page={page}>

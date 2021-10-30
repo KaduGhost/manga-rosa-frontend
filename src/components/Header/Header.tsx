@@ -18,7 +18,7 @@ export default function Header({ title }: Props) {
             pr={3}
             pl={3}>
             <Logo />
-            <Text fontSize="40" fontWeight="800">Manga Rosa Ltda</Text>
+            <Text fontSize="40" fontWeight="800">Manga Rosa</Text>
             {title && <Box alignSelf="center">
                 <Text color="white" fontWeight={800} fontSize={30}>{title}</Text>
             </Box>}
