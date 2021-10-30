@@ -11,3 +11,6 @@ export { default as CustomBarEmpty } from './Bar/CustomBarEmpty';
 export { default as ListBasic } from './List/ListBasic';
 
 export { default as BoxHired } from './Box/BoxHired';
+
+export { default as BasicLabel } from './Label/BasicLabel';
+export { default as ArrayLabel } from './Label/ArrayLabel';
