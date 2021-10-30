@@ -6,10 +6,13 @@ import { HiredController } from "../controllers";
 import { IHired } from "../types";
 
 export default function Registers() {
+  //metodo para pegar router
   const history = useHistory();
+
   const [hireds, setHireds] = useState<IHired[]>([]);
 
   useEffect(() => {
+    //Metodo para buscar todos os contratados do bando de dados
     const fetch = async () => {
       const hiredsDb: any = await HiredController.findAll();
       setHireds(hiredsDb.data);
@@ -17,6 +20,7 @@ export default function Registers() {
     fetch();
   }, []);
 
+  //Função para enviar para a página de validação
   const handleClick = (name: string) => {
     history.push(`/${name}/validar`);
   };
@@ -42,7 +46,12 @@ export default function Registers() {
         }}
         onClickSearch={(input) => {
           return (item: IHired) => {
-             return (item.phone && item.phone.includes(input)) ||item.name.includes(input) || item.cpf.includes(input) || item.email.includes(input);
+            return (
+              (item.phone && item.phone.includes(input)) ||
+              item.name.includes(input) ||
+              item.cpf.includes(input) ||
+              item.email.includes(input)
+            );
           };
         }}
       />

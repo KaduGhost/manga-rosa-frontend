@@ -10,7 +10,9 @@ import { checkCandidate } from "../validators";
 import { HiredController } from "../controllers";
 
 export default function Register() {
+  //Pegando parametros do link
   const params: any = useParams();
+  //importando o toast do chakra
   const toast = useToast();
 
   const [cpfValid, setCpfValid] = useState<boolean>(false);
@@ -21,6 +23,7 @@ export default function Register() {
   const [phone, setPhone] = useState<string>("");
   const [knowledges, setKnowledge] = useState<string[]>([]);
 
+  //Função para criar o objeto contratado
   const transforHired = (): IHiredRegister => {
     return {
       name,
@@ -33,9 +36,13 @@ export default function Register() {
     };
   };
 
+  //Função para registrar o contratado no banco de dados
   const submit = async () => {
     const hiredUpdate = transforHired();
+
+    //Função para validar os dados inseridos
     let result = await checkCandidate(hiredUpdate);
+
     if (result.valid) {
       const response: any = await HiredController.save(hiredUpdate);
       if (response.error) {
@@ -126,6 +133,7 @@ export default function Register() {
               ]}
               namelabel="Conhecimentos"
               change={(e) => {
+                //Permitir escolher apenas 3 conhecimentos no formulário
                 if (e.length <= 3) setKnowledge(e);
                 else {
                   toast({

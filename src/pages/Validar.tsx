@@ -1,21 +1,24 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { DashboardContainer } from "../containers/Dashboard";
-import { HiredController } from "../controllers";
-import { IHired } from "../types";
-import { Spinner, Flex, Button, Stack } from "@chakra-ui/react";
-import { ArrayLabel, BasicLabel, CustomBarEmpty } from "../components";
 import moment from "moment";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Spinner, Flex, Button, Stack } from "@chakra-ui/react";
+
+import { IHired } from "../types";
 import { StringUtils } from "../utils";
+import { HiredController } from "../controllers";
+import { DashboardContainer } from "../containers/Dashboard";
+import { ArrayLabel, BasicLabel, CustomBarEmpty } from "../components";
 
 export default function Validar() {
   const [hired, setHired] = useState<IHired>();
 
+  //Funções para pegar parametros e router
   const params: any = useParams();
   let history = useHistory();
 
   useEffect(() => {
+    //Função para buscar contratado no bancco de dados
     const fetch = async () => {
       const hiredDb: any = await HiredController.findByName(params.slug);
       setHired(hiredDb.data);
@@ -23,6 +26,7 @@ export default function Validar() {
     fetch();
   }, []);
 
+  //Função para validar contratado
   const handleValidate = async () => {
     if (hired) {
       const hiredUpdate = {
@@ -34,6 +38,7 @@ export default function Validar() {
     }
   };
 
+  //FUnção para não valdiar contratador
   const handleInvalidate = async () => {
     if (hired) {
       const hiredUpdate = {
@@ -45,9 +50,9 @@ export default function Validar() {
     }
   };
 
+  //Função para realizar o update do contratado
   const handleUpdate = async (hiredUpdate: IHired) => {
     const response = await HiredController.update(hiredUpdate);
-    console.log(response);
     setHired(hiredUpdate);
   };
 
