@@ -11,8 +11,8 @@ class HiredController {
     try {
       let response = await api.post("/", solicitacao);
       return response.data;
-    } catch (error) {
-      throw error;
+    } catch (error:any) {
+      return error.response.data
     }
   }
 
@@ -54,7 +54,3 @@ class HiredController {
 }
 
 export default new HiredController();
-
-
-
-

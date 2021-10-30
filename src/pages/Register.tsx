@@ -29,7 +29,7 @@ export default function Register() {
       phone,
       knowledges,
       cpfValid,
-      valid: false
+      valid: false,
     };
   };
 
@@ -37,17 +37,17 @@ export default function Register() {
     const hiredUpdate = transforHired();
     let result = await checkCandidate(hiredUpdate);
     if (result.valid) {
-      try {
-        HiredController.save(hiredUpdate);
+      const response: any = await HiredController.save(hiredUpdate);
+      if (response.error) {
+        toast({
+          title: response.error.message,
+          status: "error",
+          isClosable: true,
+        });
+      } else {
         toast({
           title: "Cadastro feita com sucesso",
           status: "success",
-          isClosable: true,
-        });
-      } catch (error) {
-        toast({
-          title: "Ocorreu algum erro ao cadastrar",
-          status: "error",
           isClosable: true,
         });
       }

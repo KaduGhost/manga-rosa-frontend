@@ -3,7 +3,7 @@ export interface IHired {
     name: string;
     email: string;
     cpf: string;
-    phone: string;
+    phone?: string;
     valid: boolean;
     dateValidate: number;
     knowledges: string[];

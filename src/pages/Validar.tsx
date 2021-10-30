@@ -6,7 +6,7 @@ import { IHired } from "../types";
 import { Spinner, Flex, Button, Stack } from "@chakra-ui/react";
 import { ArrayLabel, BasicLabel, CustomBarEmpty } from "../components";
 import { StringUtils } from "../utils";
-import moment from 'moment';
+import moment from "moment";
 import { useHistory } from "react-router-dom";
 
 export default function Validar() {
@@ -23,25 +23,56 @@ export default function Validar() {
     fetch();
   }, []);
 
+  const handleValidate = () => {};
+
+  const handleInvalidate = () => {};
+
   return (
     <DashboardContainer>
-        <CustomBarEmpty>
-            <Button colorScheme="red" onClick={history.goBack}>Voltar</Button>
-        </CustomBarEmpty>
+      <CustomBarEmpty>
+        <Button colorScheme="red" onClick={history.goBack}>
+          Voltar
+        </Button>
+      </CustomBarEmpty>
       {hired ? (
-        <Stack direction="column" justifyContent="center" alignItems="center" spacing={5}>
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={5}
+        >
           <Flex direction="column">
             <BasicLabel title="CPF: " value={hired.cpf} />
             <BasicLabel title="Nome Completo: " value={hired.name} />
             <BasicLabel title="Email: " value={hired.email} />
-            <BasicLabel title="Celular: " value={StringUtils.formatWithMask(hired.phone, StringUtils.masks.phone)} />
-            <BasicLabel title="Validado: " value={hired.valid ? "sim" : "não"} />
+            {hired.phone && (
+              <BasicLabel
+                title="Celular: "
+                value={StringUtils.formatWithMask(
+                  hired.phone,
+                  StringUtils.masks.phone
+                )}
+              />
+            )}
+            <BasicLabel
+              title="Validado: "
+              value={hired.valid ? "sim" : "não"}
+            />
             <ArrayLabel namelabel="Conhecimentos: " values={hired.knowledges} />
-            {hired.dateValidate != 0 &&  <BasicLabel title="CPF: " value={moment(hired.dateValidate).format("DD/MM/YYYY")} />}
+            {hired.dateValidate != 0 && (
+              <BasicLabel
+                title="CPF: "
+                value={moment(hired.dateValidate).format("DD/MM/YYYY")}
+              />
+            )}
           </Flex>
           <Stack direction="row" spacing={2}>
-            <Button colorScheme="red">Não Validar</Button>
-            <Button colorScheme="green">Validar</Button>
+            <Button colorScheme="red" onClick={handleInvalidate}>
+              Não Validar
+            </Button>
+            <Button colorScheme="green" onClick={handleValidate}>
+              Validar
+            </Button>
           </Stack>
         </Stack>
       ) : (
