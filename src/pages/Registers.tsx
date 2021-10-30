@@ -12,6 +12,7 @@ export default function Registers() {
   useEffect(() => {
     const fetch = async () => {
       const hiredsDb: any = await HiredController.findAll();
+      console.log(hiredsDb)
       setHireds(hiredsDb.data);
     };
     fetch();

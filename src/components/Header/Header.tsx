@@ -15,7 +15,8 @@ export default function Header({ title }: Props) {
             maxHeight="33vh"
             justifyContent="space-between"
             alignItems="center"
-            pr={3}>
+            pr={3}
+            pl={3}>
             <Logo />
             <Text fontSize="40" fontWeight="800">Manga Rosa Ltda</Text>
             {title && <Box alignSelf="center">

@@ -47,8 +47,8 @@ class HiredController {
     try {
       let response = await api.put("/", customer);
       return response.data;
-    } catch (error) {
-      throw error;
+    } catch (error:any) {
+      return error.response.data
     }
   }
 }

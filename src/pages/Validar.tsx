@@ -23,9 +23,33 @@ export default function Validar() {
     fetch();
   }, []);
 
-  const handleValidate = () => {};
+  const handleValidate = async () => {
+    if (hired) {
+      const hiredUpdate = {
+        ...hired,
+        valid: true,
+        dateValidate: moment().valueOf(),
+      };
+      handleUpdate(hiredUpdate);
+    }
+  };
 
-  const handleInvalidate = () => {};
+  const handleInvalidate = async () => {
+    if (hired) {
+      const hiredUpdate = {
+        ...hired,
+        valid: false,
+        dateValidate: 0,
+      };
+      handleUpdate(hiredUpdate);
+    }
+  };
+
+  const handleUpdate = async (hiredUpdate: IHired) => {
+    const response = await HiredController.update(hiredUpdate);
+    console.log(response);
+    setHired(hiredUpdate);
+  };
 
   return (
     <DashboardContainer>
@@ -45,7 +69,7 @@ export default function Validar() {
             <BasicLabel title="CPF: " value={hired.cpf} />
             <BasicLabel title="Nome Completo: " value={hired.name} />
             <BasicLabel title="Email: " value={hired.email} />
-            {hired.phone && (
+            {hired.phone && hired.phone !== "" && (
               <BasicLabel
                 title="Celular: "
                 value={StringUtils.formatWithMask(
@@ -58,13 +82,19 @@ export default function Validar() {
               title="Validado: "
               value={hired.valid ? "sim" : "não"}
             />
-            <ArrayLabel namelabel="Conhecimentos: " values={hired.knowledges} />
             {hired.dateValidate != 0 && (
-              <BasicLabel
-                title="CPF: "
-                value={moment(hired.dateValidate).format("DD/MM/YYYY")}
-              />
+              <>
+                <BasicLabel
+                  title="Data da validação: "
+                  value={moment(hired.dateValidate).format("DD/MM/YYYY")}
+                />
+                <BasicLabel
+                  title="Hora da validação: "
+                  value={moment(hired.dateValidate).format("HH:mm:ss")}
+                />
+              </>
             )}
+            <ArrayLabel namelabel="Conhecimentos: " values={hired.knowledges} />
           </Flex>
           <Stack direction="row" spacing={2}>
             <Button colorScheme="red" onClick={handleInvalidate}>
