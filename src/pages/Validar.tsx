@@ -5,9 +5,9 @@ import { HiredController } from "../controllers";
 import { IHired } from "../types";
 import { Spinner, Flex, Button, Stack } from "@chakra-ui/react";
 import { ArrayLabel, BasicLabel, CustomBarEmpty } from "../components";
-import { StringUtils } from "../utils";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
+import { StringUtils } from "../utils";
 
 export default function Validar() {
   const [hired, setHired] = useState<IHired>();
@@ -39,7 +39,7 @@ export default function Validar() {
       const hiredUpdate = {
         ...hired,
         valid: false,
-        dateValidate: 0,
+        dateValidate: moment().valueOf(),
       };
       handleUpdate(hiredUpdate);
     }

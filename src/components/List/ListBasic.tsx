@@ -11,6 +11,7 @@ interface IListBasic {
   componentItem: any;
   filter?: (object: any) => boolean;
   orderBy?: (a: any, b: any) => number;
+  onClickSearch?: (input: string) => (object: any) => boolean;
 }
 
 export default function ListBasic({
@@ -21,27 +22,35 @@ export default function ListBasic({
   columns,
   componentItem,
   filter,
+  onClickSearch,
 }: IListBasic) {
+  const [inputSearch, setInputSearch] = useState<string>('');
   const [pages, setPages] = useState<number>(1);
   const [page, setPage] = useState<number>(initialPage);
 
   const itemsFiltered = filter ? items.filter(filter) : items;
   const itemsOrdered = orderBy ? itemsFiltered.sort(orderBy) : itemsFiltered;
+  const itemsSearched = onClickSearch ? itemsOrdered.filter((object) => {
+    return onClickSearch(inputSearch)(object);
+  }) : itemsOrdered;
+  
 
   const getRowsByPage = (page: number) => {
-    const rows = itemsOrdered.slice(perPage * (page - 1), perPage * page);
+    const rows = itemsSearched.slice(perPage * (page - 1), perPage * page);
     return rows;
   };
 
   useEffect(() => {
-    setPages(Math.ceil(itemsOrdered.length / perPage));
+    setPages(Math.ceil(itemsSearched.length / perPage));
   }, []);
 
   return (
     <>
       <CustomBarEmpty>
         <Stack direction="row" spacing={10} w="100%">
-          <InputSearch />
+          <InputSearch
+            onClickSearch={(input) => setInputSearch(input)}
+          />
         </Stack>
       </CustomBarEmpty>
       <ListContainer pages={pages} onChangePage={setPage} page={page}>
