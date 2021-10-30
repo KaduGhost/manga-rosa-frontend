@@ -25,9 +25,18 @@ class HiredController {
     }
   }
 
+  async findByName(name: string): Promise<JSON> {
+    try {
+      let response = await api.get("/findByName", { params: { name: name } });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async findById(id: string): Promise<JSON> {
     try {
-      let response = await api.get("/findById", { params: { _id: id } });
+      let response = await api.get("/findById", { params: { id: id } });
       return response.data;
     } catch (error) {
       throw error;

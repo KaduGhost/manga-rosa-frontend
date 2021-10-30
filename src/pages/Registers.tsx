@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { ListBasic, BoxHired } from "../components";
 import { DashboardContainer } from "../containers/Dashboard";
 import { HiredController } from "../controllers";
 import { IHired } from "../types";
 
 export default function Registers() {
+  const history = useHistory();
   const [hireds, setHireds] = useState<IHired[]>([]);
 
   useEffect(() => {
@@ -15,6 +17,10 @@ export default function Registers() {
     fetch();
   }, []);
 
+  const handleClick = (name: string) => {
+    history.push(`/${name}/validar`)
+  }
+
   return (
     <DashboardContainer>
       <ListBasic
@@ -22,9 +28,13 @@ export default function Registers() {
         initialPage={1}
         items={hireds}
         columns={["Nome", "Status"]}
-        componentItem={<BoxHired onClickRow={hired => {
-            console.log(hired.id)
-        }}></BoxHired>}
+        componentItem={
+          <BoxHired
+            onClickRow={(hired) => {
+              handleClick(hired.name)
+            }}
+          ></BoxHired>
+        }
       />
     </DashboardContainer>
   );

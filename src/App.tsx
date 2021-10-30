@@ -8,9 +8,9 @@ class App extends Component {
        <Router>
            <div className="App">
             <Switch>
-              <Route exact path='/:slug/registrar' component={Register}></Route>
-              <Route exact path='/:slug/validar' component={Validar}></Route>
-              <Route exact path='/registros' component={Registers}></Route>
+              <Route exact path='/:slug/registrar' component={Register}/>
+              <Route exact path='/:slug/validar' component={Validar}/>
+              <Route exact path='/registros' component={Registers}/>
             </Switch>
           </div>
        </Router>
