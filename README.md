@@ -39,3 +39,5 @@ Este projeto possui 3 rotas utilizaveis, veja a descrição delas abaixo.
 | `/NOMEDOCOLABORADOR/validar  `   | Está rota serve para ver as informações cadastrados do colaborador e para validar seu cadastro, onde tem `NOMEDOCOLABORADOR` utilize exatamente o nome do colaborador como foi cadastrado |
 
 Na rota de validação existem 2 botões que serve para validar e não validar o cadastro
+
+Feito por Carlos Eduardo (KaduGhost)
