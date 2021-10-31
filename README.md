@@ -6,7 +6,18 @@ Um projeto de gerenciamento de contratados feito em REACT, usando a biblioteca c
 
 Para iniciar o projeto, você precisa utilizar a api `manga-rosa-backend` que vai servir para alimentar este projeto. Você encontra está api clicando [aqui](https://github.com/KaduGhost/manga-rosa-backend)
 
-Após seguir as instruções de instalação da api, utilize o seguinte comando para instalar os modulos node desta aplicação:
+Após seguir as instruções de instalação da api, utilize o seguinte comando para clonar este repositório:
+
+```sh
+git clone https://github.com/KaduGhost/manga-rosa-frontend
+```
+Utilize o seguinte comando para ir até a pasta do repositório
+
+```sh
+cd manga-rosa-frontend
+```
+
+Utilize o seguinte comando para instalar as dependências desta aplicação:
 
 ```sh
 npm install
