@@ -11,7 +11,7 @@ Após seguir as instruções de instalação da api, utilize o seguinte comando 
 ```sh
 npm install
 ```
-Após a instalação dos modulos utilize o comando a seguir para iniciar a applicação:
+Após a instalação dos modulos utilize o comando a seguir para iniciar a aplicação:
 
 ```sh
 npm start
@@ -25,6 +25,6 @@ Este projeto possui 3 rotas utilizaveis, veja a descrição delas abaixo.
 | -------------------------------- | -------------------------------------------- |
 | `/NOMEDOCOLABORADOR/registrar`   | Está rota serve para se cadastrar um novo colaborador na empresa, onde tem `NOMEDOCOLABORADOR` utilize o nome do colaborador que ira ser cadastrado |
 | `/registros`                     | Está rota serve para ver a lista de colaboradores cadastrados                                                                                       |
-| `/NOMEDOCOLABORADOR/validar  `   | Está rota serve para ver as informações cadastrados do colaborador e para validar seu cadastro,  onde tem `NOMEDOCOLABORADOR` utilize exatamente o nome do colaborador como foi cadastrado |
+| `/NOMEDOCOLABORADOR/validar  `   | Está rota serve para ver as informações cadastrados do colaborador e para validar seu cadastro, onde tem `NOMEDOCOLABORADOR` utilize exatamente o nome do colaborador como foi cadastrado |
 
 Na rota de validação existem 2 botões que serve para validar e não validar o cadastro
