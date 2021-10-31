@@ -1,6 +1,6 @@
 # Manga Rosa Frontend
 
-Um projeto de gerenciamento de contratados feito em REACT, usando a biblioteca chakra-ui
+Um projeto de gerenciamento de contratados feito em REACT, usando a biblioteca chakra-ui e tendo como linguagem base o typescript
 
 # Guia de Instalação
 
@@ -22,7 +22,7 @@ Utilize o seguinte comando para instalar as dependências desta aplicação:
 ```sh
 npm install
 ```
-Após a instalação dos modulos utilize o comando a seguir para iniciar a aplicação:
+Após a instalação das dependências utilize o comando a seguir para iniciar a aplicação:
 
 ```sh
 npm start
