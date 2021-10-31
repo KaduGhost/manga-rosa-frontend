@@ -21,10 +21,10 @@ npm start
 
 Este projeto possui 3 rotas utilizaveis, veja a descrição delas abaixo.
 
-| Rota                             | Adicional     | Descrição                                    |
-| -------------------------------- | ------------- | -------------------------------------------- |
-| `/NOMEDOCOLABORADOR/registrar`   | []            | Está rota serve para se cadastrar um novo colaborador na empresa, onde tem `NOMEDOCOLABORADOR` utilize o nome do colaborador que ira ser cadastrado |
-| `/registros`                     | []            | Está rota serve para ver a lista de colaboradores cadastrados                                                                                       |
-| `/NOMEDOCOLABORADOR/validar  `   | []            | Está rota serve para ver as informações cadastrados do colaborador e para validar seu cadastro                                                      |
+| Rota                             | Descrição                                    |
+| -------------------------------- | -------------------------------------------- |
+| `/NOMEDOCOLABORADOR/registrar`   | Está rota serve para se cadastrar um novo colaborador na empresa, onde tem `NOMEDOCOLABORADOR` utilize o nome do colaborador que ira ser cadastrado |
+| `/registros`                     | Está rota serve para ver a lista de colaboradores cadastrados                                                                                       |
+| `/NOMEDOCOLABORADOR/validar  `   | Está rota serve para ver as informações cadastrados do colaborador e para validar seu cadastro                                                      |
 
 Na rota de validação existem 2 botões que serve para validar e não validar o cadastro
